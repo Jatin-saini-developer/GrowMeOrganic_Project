@@ -1,7 +1,7 @@
-import { DataTable } from "primereact/datatable";
+import { DataTable, type DataTablePageEvent } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { useState, useEffect } from "react";
-import type { DataTablePageParams } from 'primereact/datatable';
+// import { DataTablePageEvent } from 'primereact/datatable';
 
 interface User {
   title: string;
@@ -48,7 +48,7 @@ const App = () => {
   }, [lazyParams]);
 
   //  When page changes
-  const onPageChange = (event: DataTablePageParams) => {
+  const onPageChange = (event: DataTablePageEvent) => {
     setLazyParams({
       ...lazyParams,
       first: event.first ?? 0,
