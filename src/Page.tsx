@@ -1,7 +1,8 @@
 import { DataTable, type DataTablePageEvent } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { useState, useEffect } from "react";
-// import { DataTablePageEvent } from 'primereact/datatable';
+// import { OverlayPanel } from 'primereact/overlaypanel';
+// import { Button } from 'primereact/button'; 
 
 interface User {
   title: string;
@@ -22,10 +23,9 @@ const App = () => {
   const [lazyParams, setLazyParams] = useState({
     first: 0,
     rows: 12,
-    page: 1,
+    page: 0,
   });
 
-  // 🟡 Fetch API Data whenever page changes
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -47,13 +47,12 @@ const App = () => {
     fetchData();
   }, [lazyParams]);
 
-  //  When page changes
   const onPageChange = (event: DataTablePageEvent) => {
     setLazyParams({
       ...lazyParams,
       first: event.first ?? 0,
       rows: event.rows ?? 12,
-      page: event.page ?? 1,
+      page: event.page ?? 0,
     });
   };
 
